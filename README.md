@@ -54,7 +54,9 @@ By saving the paths produced in training (not something the model will presently
   
 ![LV_paths](figs/LV_paths_torch.gif)
 
-![loss](figs/loss_torch.png.png)
+![loss](figs/loss_torch.png)
+
+> Note KL divergence had not been decreased yet (5,000 iterations)
 
 ![distribution of theta](figs/theta_torch.png)
 
