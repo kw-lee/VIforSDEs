@@ -28,8 +28,9 @@ class Model():
         # print(features['feature_init'])
         # print(obs)
         self.SDE = LotkaVolterra(network_params, p, dt, obs, params, priors, features)
-        self.opt = torch.optim.Adam(self.SDE.parameters(), lr=1e-3)
-        self.scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(self.opt, T_max=10, eta_min=0)
+        self.opt = torch.optim.Adam(self.SDE.parameters(), lr=1e-2)
+        self.scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(self.opt, T_max=50, eta_min=0)
+        # self.scheduler = torch.optim.lr_scheduler.ExponentialLR(self.opt, gamma=0.95)
     
     def train_step(self, step):
         self.opt.zero_grad()
@@ -71,7 +72,7 @@ class Model():
                     # writer.add_scalar('params/theta/theta_1_mean', self.SDE.c1_mean.exp().item(), i)
                     # writer.add_scalar('params/theta/theta_2_mean', self.SDE.c2_mean.exp().item(), i)
                     # writer.add_scalar('params/theta/theta_3_mean', self.SDE.c3_mean.exp().item(), i)
-            if i % 50 == 1:
+            if i % 25 == 1:
                 with torch.no_grad():
                     vi_paths, _, _ = self.SDE._diff_bridge(Test=True)
                     theta1, _, theta2, _, theta3, _ \

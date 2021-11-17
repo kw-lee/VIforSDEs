@@ -51,12 +51,13 @@ By saving the paths produced in training (not something the model will presently
 ![](figs/LV_paths.gif)
 
 * Using PyTorch 1.10.0:
-  
+  * optimizer: Adam with `lr=1e-2`
+  * scheduler: `CosineAnnealingLR(optimizer, T_max=50, eta_min=0)`
+  * iterations: 5,000 (about 30mins)
+   
 ![LV_paths](figs/LV_paths_torch.gif)
 
 ![loss](figs/loss_torch.png)
-
-> Note KL divergence had not been decreased yet (5,000 iterations)
 
 ![distribution of theta](figs/theta_torch.png)
 
