@@ -6,9 +6,11 @@ Tensorflow implementation of the Lotka-Volterra example detailed in [Black-box V
  ---
 
 ### Example: Lotka-volterra
+
 Here we demonstrate the implementation of example "multiple observation times with unknown parameters" in section 5.1 of the paper. That is, full parameter inference for a two-dimensional Lotka-Volterra SDE, with known variance of the measurement error, observed a discrete time-steps of 10.
 
 #### System Requirments
+
 The following example was tested using tensorflow 1.5, numpy 1.14 and python 3. It has not been rigorously tested on newer and/or later versions of any of the dependencies. For any related questions, please see the contact section.
 
 This example additionally makes use of tensorboard (1.5) to visualise the training. As such, you should specify the path for your tensorboard output in *lotka_volterra_data.py*. For example:
@@ -20,7 +22,12 @@ and then launch tensorboard using:
 ```
 tensorboard --logdir=~/Documents/my_cool_model/train/
 ```
+
 Note that the parameter posteriors in tensorboard are parameterised using log-normals.
+
+#### System Requirments - PyTorch
+
+`lotka-volterra-torch` was tested using PyTorch 1.10.0, numpy 1.21.3, pyro 1.7.0 and python 3.9.7. 
 
 #### Running the Example
 This example assumes a known, constant known variance of the measurement error (you can change the value in the data file, i.e. 'TAU') and attempts to learn:
@@ -39,7 +46,13 @@ Note that the model will infrequently produce an error relating to the Cholesky 
 #### Visualisation
 By saving the paths produced in training (not something the model will presently do by default), we can watch the model learn the latent diffusion process:
 
+* Using TF 1.5:
+
 ![](figs/LV_paths.gif)
+
+* Using PyTorch 1.10.0:
+
+![](figs/LV_paths_torch.gif)
 
 ---
 
@@ -50,3 +63,7 @@ Should you have any queries or suggestions (all welcome), you should contact eit
 - [t.ryder2@ncl.ac.uk](mailto:t.ryder2@ncl.ac.uk)
 
 - [dennis.prangle@ncl.ac.uk](mailto:dennis.prangle@ncl.ac.uk)
+
+For torch version, 
+
+- [lkw1718@snu.ac.kr](lkw1718@snu.ac.kr)
