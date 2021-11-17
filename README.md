@@ -51,8 +51,12 @@ By saving the paths produced in training (not something the model will presently
 ![](figs/LV_paths.gif)
 
 * Using PyTorch 1.10.0:
+  
+![LV_paths](figs/LV_paths_torch.gif)
 
-![](figs/LV_paths_torch.gif)
+![loss](figs/loss_torch.png.png)
+
+![distribution of theta](figs/theta_torch.png)
 
 ---
 
